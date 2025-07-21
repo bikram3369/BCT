@@ -1,0 +1,33 @@
+<div class="task-list">
+  <h2>Your Tasks</h2>
+
+  <!-- ✅ Task input form -->
+  <form (ngSubmit)="addTask()" #form="ngForm" class="task-form">
+    <input
+      type="text"
+      placeholder="Enter a new task"
+      [(ngModel)]="newTask"
+      name="taskInput"
+      required
+    />
+    <button type="submit">Add Task</button>
+  </form>
+
+  <!-- ✅ Show tasks if available -->
+  <div class="task-items" *ngIf="tasks().length > 0; else noTasks">
+    <ng-container *ngFor="let task of tasks()">
+      <app-task-item
+        [task]="task"
+        (delete)="deleteTask(task._id ?? task.id!)"
+        (complete)="toggleComplete(task)"
+        (edit)="editTask(task)"
+        (save)="saveEdit(task._id ?? task.id!, task.title)"
+      ></app-task-item>
+    </ng-container>
+  </div>
+
+  <!-- ❗ No tasks fallback -->
+  <ng-template #noTasks>
+    <p class="no-task-msg">No tasks added yet.</p>
+  </ng-template>
+</div>

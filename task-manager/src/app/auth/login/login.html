@@ -1,0 +1,13 @@
+<div class="auth-container">
+  <h2>Login</h2>
+  <form (submit)="onLogin($event)">
+    <label>Email</label>
+    <input type="email" [(ngModel)]="email" name="email" required />
+
+    <label>Password</label>
+    <input type="password" [(ngModel)]="password" name="password" required />
+
+    <button type="submit">Login</button>
+    <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
+  </form>
+</div>

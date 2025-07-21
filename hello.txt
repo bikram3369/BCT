@@ -1,0 +1,43 @@
+task-manager-mean-stack/
+│
+├── backend/ (Node.js + Express + MongoDB)
+│   ├── models/
+│   ├── routes/
+│   ├── controllers/
+│   ├── app.js
+│   └── .env
+│
+├── frontend/ (Angular)
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── auth/
+│   │   │   ├── dashboard/
+│   │   │   ├── task/
+│   │   │   └── services/
+│   │   └── ...
+│   └── angular.json
+│
+├── package.json
+└── README.md
+
+✅ Backend Setup (Node.js + Express + MongoDB)
+1. Initialize backend:
+
+mkdir backend
+cd backend
+npm init -y
+npm install express mongoose cors dotenv bcryptjs jsonwebtoken
+
+npm install -g @angular/cli
+ng new frontend --routing --style=scss
+├── src/
+│   ├── app/
+│   │   ├── auth/
+│   │   │   └── signup/
+│   │   ├── dashboard/
+│   │   │   ├── task-modal/
+│   │   ├── services/
+│   │   │   ├── auth.service.ts
+│   │   │   ├── task.service.ts
+│   │   └── app-routing.module.ts
+│   │   └── app.component.ts

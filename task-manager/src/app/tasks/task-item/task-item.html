@@ -1,0 +1,27 @@
+<div class="task-item">
+  <!-- Editing Mode -->
+  <div *ngIf="task.editing; else viewMode" class="edit-mode">
+    <input
+      [(ngModel)]="editedTitle"
+      placeholder="Edit task"
+      class="edit-input"
+    />
+    <button (click)="onSave()">Save</button>
+  </div>
+
+  <!-- View Mode -->
+  <ng-template #viewMode>
+    <div class="view-mode">
+      <input
+        type="checkbox"
+        [checked]="task.completed"
+        (change)="complete.emit(task.id)"
+      />
+
+      <span [class.completed]="task.completed">{{ task.title }}</span>
+
+      <button (click)="edit.emit(task.id)">Edit</button>
+      <button (click)="delete.emit(task.id)">Delete</button>
+    </div>
+  </ng-template>
+</div>

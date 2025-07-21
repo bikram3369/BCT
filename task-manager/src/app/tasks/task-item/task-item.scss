@@ -1,0 +1,29 @@
+.task-item {
+  margin: 10px 0;
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.view-mode {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.edit-mode {
+  display: flex;
+  gap: 10px;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+button {
+  padding: 4px 8px;
+  cursor: pointer;
+}
