@@ -1,0 +1,24 @@
+<div class="history-layout">
+  <app-header></app-header>
+
+  <div class="history-main">
+    <h2>Task History</h2>
+
+    <!-- 🧹 Clear History Button -->
+    <button (click)="clearHistory()" class="clear-btn">🗑 Clear All History</button>
+
+    <div *ngIf="historyTasks.length > 0; else noHistory">
+      <div class="history-task" *ngFor="let task of historyTasks">
+        <span class="title">{{ task.title }}</span>
+        <span class="status">{{ task.completed ? '✔ Completed' : '🗑 Deleted' }}</span>
+        <span class="datetime">{{ task.date }} at {{ task.time }}</span>
+      </div>
+    </div>
+
+    <ng-template #noHistory>
+      <p>No history available.</p>
+    </ng-template>
+  </div>
+
+  <app-footer></app-footer>
+</div>
