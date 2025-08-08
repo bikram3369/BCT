@@ -31,7 +31,6 @@ export class TaskItemComponent implements OnChanges {
 
   editedTitle = '';
 
-  // ✅ Detect changes when new task is passed in
   ngOnChanges(changes: SimpleChanges) {
     if (changes['task']) {
       this.editedTitle = this.task.title;

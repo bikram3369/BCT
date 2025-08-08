@@ -7,11 +7,7 @@ import { TaskService, Task } from '../task.service';
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    TaskItemComponent
-  ],
+  imports: [CommonModule, FormsModule, TaskItemComponent],
   templateUrl: './task-list.html',
   styleUrls: ['./task-list.scss']
 })
@@ -24,22 +20,22 @@ export class TaskListComponent {
   }
 
   addTask() {
-  console.log('🟡 addTask called!');
-  console.log('Input:', this.newTask);
+    console.log('🟡 addTask called!');
+    console.log('Input:', this.newTask);
 
-  const trimmed = this.newTask.trim();
-  if (trimmed) {
-    this.taskService.addTask(trimmed);
-    this.newTask = '';
-    console.log('✅ Task added.');
-  } else {
-    console.log('⛔ Empty input, not adding.');
+    const trimmed = this.newTask.trim();
+    if (trimmed) {
+      this.taskService.addTask(trimmed);
+      this.newTask = '';
+      console.log('✅ Task added.');
+    } else {
+      console.log('⛔ Empty input, not adding.');
+    }
   }
-}
 
   deleteTask(id: string | number) {
-  this.taskService.deleteTask(id.toString());
-}
+    this.taskService.deleteTask(id.toString());
+  }
 
   toggleComplete(task: Task) {
     this.taskService.updateTask({
@@ -48,18 +44,18 @@ export class TaskListComponent {
     });
   }
 
-  // ✅ Add this method to handle inline edit mode
   editTask(task: Task) {
     task.editing = true;
   }
 
-  // ✅ Add this method to handle saving the edited title
-  saveEdit(id: string | number, title: string) {
-    const taskToUpdate = this.tasks().find(t => t._id === id || t.id === id);
+  saveEdit(data: { id: string | number; title: string }) {
+    const taskToUpdate = this.tasks().find(
+      t => t._id === data.id || t.id === data.id
+    );
     if (taskToUpdate) {
       this.taskService.updateTask({
         ...taskToUpdate,
-        title,
+        title: data.title,
         editing: false
       });
     }

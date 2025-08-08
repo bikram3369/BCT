@@ -21,7 +21,7 @@
         (delete)="deleteTask(task._id ?? task.id!)"
         (complete)="toggleComplete(task)"
         (edit)="editTask(task)"
-        (save)="saveEdit(task._id ?? task.id!, task.title)"
+        (save)="saveEdit($event)" 
       ></app-task-item>
     </ng-container>
   </div>

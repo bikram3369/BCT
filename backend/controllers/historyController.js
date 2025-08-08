@@ -22,6 +22,7 @@ exports.getHistory = async (req, res) => {
   }
 };
 
+
 // DELETE /api/history
 exports.clearHistory = async (req, res) => {
   try {
